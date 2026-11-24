@@ -1,0 +1,6 @@
+.env
+node_modules/
+.jest-cache/
+coverage/
+rdm/coverage/
+*.log

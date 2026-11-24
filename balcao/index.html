@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <title>EstuLanches | Cantina do Chico</title>
+  <link rel="stylesheet" href="/quadro.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="/" aria-label="EstuLanches - início"><span class="brand-seal">E<span>+</span></span><span class="brand-words">ESTU<span>Lanches</span></span></a>
+    <div class="masthead-title"><span>QUADRO DA CANTINA</span><strong>Intervalo, sem fila de papel.</strong></div>
+    <div class="masthead-user"><span class="avatar">F</span><span><b>Francisco</b><small>Gestão do balcão</small></span></div>
+  </header>
+  <nav class="main-nav" aria-label="Seções do sistema">
+    <button class="tab nav-tab active" data-view="menu"><span>01</span>Cardápio do dia</button>
+    <button class="tab nav-tab" data-view="new-order"><span>02</span>Registrar comanda</button>
+    <button class="tab nav-tab" data-view="orders"><span>03</span>Pedidos na fila <b id="order-count" class="nav-counter">0</b></button>
+    <span id="health" class="health-pill">Conectando ao serviço...</span>
+  </nav>
+
+  <main class="page">
+    <section class="welcome-strip">
+      <div class="welcome-copy"><span class="kicker">CANTINA ESCOLAR · ESTAÇÃO DO CHICO</span><h1>Escolha, peça,<br><em>aproveite o recreio.</em></h1><p>Cardápio atualizado e pedidos organizados num só lugar.</p><button class="jump-button" data-jump="new-order">Abrir uma comanda <span>↗</span></button></div>
+      <div class="welcome-art" aria-hidden="true"><div class="art-backdrop"></div><div class="sun-stamp">PAUSA<br>BOA</div><div class="art-dish"><span>🥟</span></div><div class="art-leaf">✳</div><div class="art-caption">feito<br>na escola</div></div>
+      <div class="strip-index">CADERNO <b>01</b></div>
+    </section>
+
+    <section id="menu-view" class="view active">
+      <div class="section-heading"><div><span class="kicker">O QUE SAI HOJE</span><h2>Na lousa</h2></div><button id="new-product" class="button add-button"><span>＋</span> Incluir no cardápio</button></div>
+      <div class="filter-desk"><div class="search-input"><span class="magnifier">⌕</span><label class="sr-only" for="product-search">Buscar no cardápio</label><input id="product-search" type="search" placeholder="Procure por um sabor..." autocomplete="off"></div><label class="select-wrap"><span>VER POR GRUPO</span><select id="category-filter"><option value="">Todos os itens</option></select></label><span id="product-count" class="results-count" aria-live="polite">Contando itens</span></div>
+      <div id="products" class="menu-board"></div>
+      <form id="product-form" class="product-editor hidden">
+        <div class="editor-title"><div><span class="kicker">EDIÇÃO DO QUADRO</span><h3 id="product-form-title">Novo sabor</h3></div><button type="button" id="close-product" class="close-control" aria-label="Fechar formulário">×</button></div>
+        <input type="hidden" name="id">
+        <div class="editor-grid"><label>Nome do item<input name="name" required maxlength="120" placeholder="Ex.: Bolo de fubá"></label><label>Grupo<input name="category" required maxlength="60" placeholder="Ex.: Da fornada"></label><label>Preço<input name="price" type="number" min="0" step="0.01" required placeholder="0,00"></label><label class="switch-line"><input name="available" type="checkbox" checked> Disponível hoje</label><label class="editor-description">Descrição<textarea name="description" maxlength="500" rows="2" placeholder="Uma frase para apresentar o produto"></textarea></label></div>
+        <div class="editor-footer"><button type="button" id="cancel-product" class="button light-button">Voltar</button><button class="button add-button">Guardar item</button></div>
+      </form>
+    </section>
+
+    <section id="new-order-view" class="view">
+      <div class="section-heading"><div><span class="kicker">ATENDIMENTO RÁPIDO</span><h2>Nova comanda</h2></div><p class="section-aside">Escolha os itens e confira a conta antes de enviar.</p></div>
+      <form id="order-form" class="ticket-layout">
+        <div class="ticket-main"><label class="customer-label"><span>NOME PARA RETIRADA</span><input name="customerName" required maxlength="120" placeholder="Digite o nome do aluno"></label><div class="choice-heading"><h3>Marque o que vai pedir</h3><span>O valor é atualizado automaticamente</span></div><div id="order-products" class="order-product-list"></div></div>
+        <aside class="paper-ticket"><div class="ticket-brand"><span>ESTU LANCHES</span><b>COMANDA</b></div><div class="ticket-rule"></div><div id="order-lines" class="ticket-lines">Nenhum item selecionado.</div><div class="ticket-total"><span>VALOR DA COMANDA</span><strong id="order-total">R$ 0,00</strong></div><button class="button send-button">Enviar para preparo <span>→</span></button><small>O preço final é confirmado pela API.</small></aside>
+      </form>
+    </section>
+
+    <section id="orders-view" class="view"><div class="section-heading"><div><span class="kicker">DO BALCÃO À ENTREGA</span><h2>Pedidos na fila</h2></div><button id="refresh-orders" class="button light-button">Recarregar ↻</button></div><div id="orders" class="queue-board"></div></section>
+    <div id="toast" role="status" class="toast" aria-live="polite"></div>
+  </main>
+  <footer class="site-footer"><span>ESTULANCHES / CHICO</span><span>Um bom intervalo cabe numa comanda.</span><span class="footer-mark">✳</span></footer>
+  <script src="/quadro.js" defer></script>
+</body>
+</html>

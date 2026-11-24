@@ -1,0 +1,36 @@
+{
+  "name": "estulanches-chico",
+  "version": "1.0.0",
+  "description": "Painel do intervalo para a cantina EstuLanches",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node ferramentas/rodar-testes.js",
+    "test:unit": "jest --runInBand checks/unit --json --outputFile=rdm/testes-unitarios.json",
+    "test:integration": "jest --runInBand --forceExit checks/integration --json --outputFile=rdm/testes-integracao.json",
+    "test:coverage": "jest --coverage --runInBand checks/unit",
+    "validar": "node ferramentas/validar-ambiente.js",
+    "rdm": "node ferramentas/rodar-rdm.js"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "pg": "^8.13.1",
+    "pino": "^9.6.0",
+    "pino-http": "^10.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "pdfkit": "^0.16.0",
+    "supertest": "^7.0.0"
+  }
+}

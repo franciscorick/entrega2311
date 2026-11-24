@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-11-17T10:43:22.647Z",
+  "packageVersion": "1.0.0",
+  "composePs": "NAME                      IMAGE                   COMMAND                  SERVICE   CREATED          STATUS                    PORTS\nestulanches-chico-app-1   estulanches-chico-app   \"docker-entrypoint.s…\"   app       41 seconds ago   Up 40 seconds (healthy)   0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp\nestulanches-chico-db-1    postgres:16-alpine      \"docker-entrypoint.s…\"   db        3 minutes ago    Up 3 minutes (healthy)    5432/tcp\n",
+  "logCriticalErrors": 0,
+  "criticalLogLines": [],
+  "health": {
+    "ok": true,
+    "status": 200,
+    "body": {
+      "status": "ok",
+      "database": "connected"
+    }
+  },
+  "checks": {
+    "composePs": true,
+    "logs": true,
+    "health": true
+  }
+}
